@@ -17,6 +17,7 @@ function ChannelGrid(props){
                                 <a className="channel">
                                     <img src={chanel.urls.logo_image.original} alt="" />
                                     <h2>{chanel.title}</h2>
+                                    
                                 </a>
                             </Link>
                         )

@@ -4,7 +4,7 @@ function VistaPodcats (props){
   
       const {clip}=props
         return (
-            <div>
+           
                  <div className="modal">
                     <div className="clip">                      
 
@@ -19,8 +19,7 @@ function VistaPodcats (props){
                             </audio>
                         </div>
                     </div>
-                </div>
-                <style jsx>{`
+                    <style jsx>{`
                 header{
                         color:#fff;
                         background:#8756ca;
@@ -39,7 +38,8 @@ function VistaPodcats (props){
         }
         .clip {
           display: flex;
-          height: 100%;
+          height: 100vh;
+          width:100%;
           flex-direction: column;
           background: #875 6ca;
           color: white;
@@ -65,9 +65,11 @@ function VistaPodcats (props){
           padding: 30px;
           background: rgba(0,0,0,0.3);
           text-align: center;
+          font-size:.1em;
         }
         h3 {
           margin: 0;
+          font-size:.5em;
         }
         h6 {
           margin: 0;
@@ -95,7 +97,9 @@ function VistaPodcats (props){
           background: white;
         }
       `}</style>
-            </div>
+                </div>
+           
+          
         )
     }
 

@@ -1,12 +1,14 @@
 import React from 'react';
 import Link from 'next/link';
+import slug from '../helpers/slug'
 
 function ListaPodcast(props){
-    const {clip}=props
+    const {clip,onPress}=props
     return(
   
-          <Link href={`/podcats?id=${clip.id}`} prefetch key={clip.id}>
-        <a className="podcast">
+      
+        <a className="podcast" href={`/${slug(clip.channel.title)}.${clip.channel.id}/${slug(clip.title)}.${clip.id}`} 
+        onClick={(event) => onPress(event,clip) }>
             <img src={clip.urls.image} alt="" />
             <h3>{clip.title}</h3>
             <div className="meta">
@@ -18,7 +20,16 @@ function ListaPodcast(props){
              } 
              a{
                  text-decoration:none;
-             }         
+             }   
+             .meta{
+                 float:left;
+                 font-size:.7em;
+                 color:black
+             }  
+             h3{
+                 font-size:.7em;
+                 color:black;
+             }    
             
                  `}
          </style>
@@ -32,7 +43,7 @@ function ListaPodcast(props){
          </style>
         </a >
         
-         </Link>
+   
        
     )
 }

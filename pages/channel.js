@@ -3,9 +3,25 @@ import Error from './_error';
 import Layout from '../components/Layout';
 import ListaPodcast from '../components/ListaPodcast';
 import ListaSeries from '../components/ListaSeries';
+import PodcatsPlayer from '../components/PodcatsPlayer';
 class Channel extends Component {
+    state = {
+        openPodcats: null
+    }
 
-    static async getInitialProps({ query ,res}) {
+    openPodcats = (event, podcast) => {
+        event.preventDefault()
+        this.setState({
+            openPodcats: podcast
+        })
+    }
+
+    onClose=(event)=>{
+        this.setState({
+            openPodcats: null
+        })
+    }
+    static async getInitialProps({ query, res }) {   
         let idChannel = query.id
         try {
             let [reqChannel, reqAudio, reqSeries] = await Promise.all([
@@ -16,8 +32,8 @@ class Channel extends Component {
             ])
 
             if (reqChannel.status >= 400) {
-                res.statusCode=reqChannel.status
-                return { rechannel: null, reqAudio: null, reqSeries: null ,statusCode:reqChannel.status}
+                res.statusCode = reqChannel.status
+                return { rechannel: null, reqAudio: null, reqSeries: null, statusCode: reqChannel.status }
 
             }
 
@@ -38,7 +54,7 @@ class Channel extends Component {
 
     render() {
         const { channel, audioClips, series, statusCode } = this.props
-
+        const { openPodcats } = this.state
         if (statusCode !== 200) {
             return <Error statusCode={statusCode} />
         }
@@ -49,6 +65,9 @@ class Channel extends Component {
                     <picture>
                         <div style={{ backgroundImage: `url(${channel.urls.banner_image.original})` }}></div>
                     </picture>
+                    {openPodcats && <div className="modal">
+                    <PodcatsPlayer clip={openPodcats} onClose={this.onClose} />
+                        </div>}
                     <h2>Series</h2>
                     <div className="channels">
                         {series.map((serie) => (
@@ -58,7 +77,7 @@ class Channel extends Component {
                     <h2>Ultimos Potcast</h2>
                     <div className="channels">
                         {audioClips.map((clip) => (
-                            <ListaPodcast clip={clip} />
+                            <ListaPodcast clip={clip} onPress={this.openPodcats} />
                         ))}
                     </div>
                     <style jsx>{`    
@@ -94,6 +113,15 @@ class Channel extends Component {
                         height: 350px !important;
                         margin: 4px auto ;
                        
+                    }
+                    .modal{
+                        position:fixed;
+                        top:0;
+                        left:0;
+                        right:0;
+                        bottom:0;
+                        background:rgba(0,0,0,0.5);
+                        z-index:9999;
                     }
                         `}
                     </style>
