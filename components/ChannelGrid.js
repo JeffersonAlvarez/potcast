@@ -16,7 +16,7 @@ function ChannelGrid(props){
                             }} prefetch>
                                 <a className="channel">
                                     <img src={chanel.urls.logo_image.original} alt="" />
-                                    <h2>{chanel.title}</h2>
+                                    <h3>{chanel.title}</h3>
                                     
                                 </a>
                             </Link>
@@ -39,8 +39,8 @@ function ChannelGrid(props){
                     .channel img{
                         width:100%;
                     }
-                    h2{
-                        font-size:1em;
+                    h3{
+                        font-size:.7em;
                         color:#000;
                        
                     }

@@ -21,12 +21,16 @@ class Layout extends Component {
                     <meta name="viewport" content="width=device-width, initial-scale=1" />
                     <html lang="es" />
                 </Head>
-                 <header><Link href="/"><a>Potcast</a></Link></header>          
+                 <header><Link href="/"><a><h3 style={{fontSize:25}}>Potcast</h3></a></Link></header>          
                     {children}
+                    <footer>
+                      <a>  <h3 style={{}}>Create by Jefferson Alvarez</h3></a>
+                        <h3 style={{}}>Trabaja en <a href="https://www.btaapps.com" target="_blank" >www.Btaapps.com</a></h3>
+                    </footer>
                  <style jsx>{`                   
                     header{
                         color:#fff;
-                        background:#8756ca;
+                        background:#08244b;
                         padding:15px;
                         text-align:center;
                         }
@@ -34,11 +38,38 @@ class Layout extends Component {
                             color:#fff;
                             text-decoration:none;
                         }
+                        footer a{
+                          color:#ffbd0d;
+                            text-decoration:none;
+                        }
+                        h3{
+                          font-size:1em;
+                          font-style:italic;
+                          line-height:.5em;
+                        }
+                        footer{
+                          width:100%;
+                          height:9vh;
+                        color:#fff;
+                        background:#08244b;
+                        padding:1px;
+                        text-align:center;
+                        position:relative;
+                        bottom:0;
+                        left:0;
+                        right:0;
+                        
+                        display:block;
+                     
+                        }
                         
 
                         `}
                 </style>
                 <style jsx global>{`
+                  body{
+                    
+                  }
                 #nprogress {
                     pointer-events: none;
                   }
@@ -52,7 +83,7 @@ class Layout extends Component {
                     left: 0;
                   
                     width: 100%;
-                    height: 2px;
+                    height: 8px;
                   }
                   
                   /* Fancy blur effect */
@@ -80,8 +111,8 @@ class Layout extends Component {
                   }
                   
                   #nprogress .spinner-icon {
-                    width: 50px;
-                    height: 50px;
+                    width: 20px;
+                    height: 20px;
                     box-sizing: border-box;
                   
                     border: solid 3px transparent;
