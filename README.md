@@ -4,7 +4,7 @@ Apps de Podcats integrada con la API de AUDIOBOOM para aprender Next.JS
 
 
 ![Captura de la app](./.readme-static/apppodcats.png)
-![Direccion de la App](https://potcast-yfszjsuppl.now.sh/)
+[Direccion de la App](https://potcast-xbkjjuxjer.now.sh/)
 
 
 ## ¿Como funciona?
